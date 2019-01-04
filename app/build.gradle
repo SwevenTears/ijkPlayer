@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.administrator.ijkplayer"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'lib/armeabi-v7a/libijkplayer.so'
+        exclude 'lib/armeabi-v7a/libijkffmpeg.so'
+        exclude 'lib/armeabi-v7a/libijksdl.so'
+
+        exclude 'lib/armeabi/libijkffmpeg.so'
+        exclude 'lib/armeabi/libijkplayer.so'
+        exclude 'lib/armeabi/libijksdl.so'
+
+//        exclude 'lib/arm64-v8a/libijkffmpeg.so'
+//        exclude 'lib/arm64-v8a/libijkplayer.so'
+//        exclude 'lib/arm64-v8a/libijksdl.so'
+
+//        exclude 'lib/x86/libijkffmpeg.so'
+//        exclude 'lib/x86/libijkplayer.so'
+//        exclude 'lib/x86/libijksdl.so'
+
+//        exclude 'lib/x86_64/libijkffmpeg.so'
+//        exclude 'lib/x86_64/libijkplayer.so'
+//        exclude 'lib/x86_64/libijksdl.so'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.jakewharton:butterknife:9.0.0-rc3'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    //    根据需要支持去拓展，在jjdxm-ijkplayer中默认加入了armv7a的了
+    implementation 'com.dou361.ijkplayer-armv7a:jjdxm-ijkplayer-armv7a:1.0.0'
+    implementation 'com.dou361.ijkplayer-armv5:jjdxm-ijkplayer-armv5:1.0.0'
+    implementation 'com.dou361.ijkplayer-arm64:jjdxm-ijkplayer-arm64:1.0.0'
+    implementation 'com.dou361.ijkplayer-x86:jjdxm-ijkplayer-x86:1.0.0'
+    implementation 'com.dou361.ijkplayer-x86_64:jjdxm-ijkplayer-x86_64:1.0.0'
+    //网络获取直播视频
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.alibaba:fastjson:1.2.14'
+    //    # required, enough for most devices.
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.6.2'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.6.2'
+    //    # Other ABIs: optional
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv5:0.6.1'
+    implementation 'com.mcxiaoke.ijk.media:ijkplayer-arm64:0.6.2'
+    implementation 'com.mcxiaoke.ijk.media:ijkplayer-x86:0.6.2'
+    implementation 'com.mcxiaoke.ijk.media:ijkplayer-x86_64:0.6.2'
+    //    # ExoPlayer as IMediaPlayer: optional, experimental
+    implementation 'tv.danmaku.ijk.media:ijkplayer-exo:0.6.1'
+}
